@@ -58,13 +58,13 @@ body {
 
 /*------------ styling toggle button ---------------*/
 
-input#toggle {
+input.toggle {
   max-height: 0;
   max-width: 0;
   opacity: 0;
 }
 
-input#toggle + label {
+input.toggle + label {
   display: block;
   position: relative;
   box-shadow: inset 0 0 0px 1px #d5d5d5;
@@ -74,13 +74,13 @@ input#toggle + label {
   border-radius: 15px;
 }
 
-input#toggle + label:hover {
+input.toggle + label:hover {
 	cursor: pointer;
 }
 
 
 
-input#toggle + label:before {
+input.toggle + label:before {
   content: "";
   position: absolute;
   display: block;
@@ -95,7 +95,7 @@ input#toggle + label:before {
   transition: .25s ease-in-out;
 }
 
-input#toggle + label:after {
+input.toggle + label:after {
   content: "";
   position: absolute;
   display: block;
@@ -111,12 +111,12 @@ input#toggle + label:after {
   transition: .25s ease-in-out;
 }
 
-input#toggle:checked + label:before {
+input.toggle:checked + label:before {
   width: 50px;
   background: #13bf11;
 }
 
-input#toggle:checked + label:after {
+input.toggle:checked + label:after {
   left: 20px;
   box-shadow: inset 0 0 0 1px #13bf11, 0 2px 4px rgba(0, 0, 0, 0.2);
 }
