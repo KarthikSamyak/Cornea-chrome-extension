@@ -30,7 +30,7 @@ $(document).ready(function(){
 	chrome.storage.local.get("toggle", function(result){
     console.log("document onload");
     shader(result.toggle);
-	});
+	}); 
 
 
 	console.log("just before listening");
