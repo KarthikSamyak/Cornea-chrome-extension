@@ -2,11 +2,15 @@
 
 
 chrome.storage.local.set({"toggle": false}, function() {
-          // Notify that we saved.
-          console.log('Settings saved for shader toggle');
-        });
+    // Notify that we saved.
+    console.log('Settings saved for shader toggle');
+});
 
 chrome.storage.local.set({"checked": "unchecked"}, function(result){
-			 // Notify that we saved.
-				console.log("Settings saved for button toggle");
-		});
+	// Notify that we saved.
+	console.log("Settings saved for button toggle");
+});
+
+
+
+
