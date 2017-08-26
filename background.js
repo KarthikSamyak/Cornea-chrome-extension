@@ -22,11 +22,11 @@ chrome.storage.local.set({"checkedNotifyButton": "unchecked"}, function(result){
 });
 
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){   // Recieves messages from other scripts
 	
 	if(request.msg == "executeNotify"){
 		console.log("setting alarm");
-		chrome.alarms.create("alarmNotify", {periodInMinutes:1});
+		chrome.alarms.create("alarmNotify", {periodInMinutes:20});
 		sendResponse({response_msg:"Done! alarmNotify set" });		
 	}
 	else if(request.msg == "removeNotify"){
@@ -37,6 +37,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 });
 
 chrome.alarms.onAlarm.addListener(function(alarm){
-    alert("Alarm Ringing!!!!!");
+    notify();
 });
+
+function notify() {
+	if (Notification.permission !== "granted")
+    	Notification.requestPermission();
+  	else {
+    	var notification = new Notification('Rest your Eyes!', {
+      	icon: 'cornea_big.png',
+      	body: "Close your eyes and gently cup your palms over your closed eyes and rest them for 30 seconds"
+    });
+  }
+}
 

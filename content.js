@@ -36,23 +36,45 @@ $(document).ready(function(){
 	console.log("just before listening");
 	chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) { 
 		console.log("Listening....");
-	    chrome.storage.local.get("toggle", function(data){
-	  		chrome.storage.local.set({"toggle": !data.toggle}, function(result){
-    	    	console.log('Settings saved');
-    	    	chrome.storage.local.get("toggle", function(data){
-    	    		shader(data.toggle);
-    	    	});
-  	       });    
-		});
+		if(request.msg == "executeOverlay"){
+		    chrome.storage.local.get("toggle", function(data){
+		  		chrome.storage.local.set({"toggle": !data.toggle}, function(result){
+	    	    	console.log('Settings saved');
+	    	    	chrome.storage.local.get("toggle", function(data){
+	    	    		shader(data.toggle);
+	    	    	});
+	  	       });    
+			});
+		}
+		else if(request.msg == "executeFullscreen"){
+			fullscreen();
+			sendResponse({response_msg:"executed Fullscreen"});
+		}
 	});	
+
 	
-	function fullscreen() {
-		var el = document.documentElement,
-        rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-        rfs.call(el);
-	}
+	
 });
 
+function fullscreen() {
+	document.documentElement.webkitRequestFullScreen();
+}
+
+function notify() {
+	if (Notification.permission !== "granted")
+    	Notification.requestPermission();
+  	else {
+    	var notification = new Notification('Notification title', {
+      	icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+      	body: "Hey there! You've been notified!",
+    });
+
+    notification.onclick = function () {
+      window.open("http://stackoverflow.com/a/13328397/1269037");      
+    };
+
+  }
+}
 
 
 
