@@ -61,13 +61,29 @@ $(document).ready(function(){
 
     buttonNotify.onchange = function(){
     	console.log("buttonNotify clicked");
+
     	chrome.storage.local.get("checkedNotifyButton", function(data){	
-	  		button_2.setToggleOnChange(data.checkedNotifyButton,"buttonNotify");
+    		console.log("Inside first function");
+	  		button_2.setToggleOnChange(data.checkedNotifyButton,"buttonNotify", function(){
+
+	  		});	  		
     	});
-    	
-    	chrome.runtime.sendMessage({msg:"executeNotify"}, function(response){
-    		console.log(response.msg);
-    	});
+
+    	setTimeout( function(){
+	    	console.log("Now executing...after 1 sec");
+		  	chrome.storage.local.get("checkedNotifyButton", function(data){
+				if(data.checkedNotifyButton == "checked"){
+					chrome.runtime.sendMessage({msg:"executeNotify"}, function(response){
+					    console.log(response.response_msg);
+					});
+				}
+				else if(data.checkedNotifyButton == "unchecked"){
+					chrome.runtime.sendMessage({msg:"removeNotify"}, function(response){
+					    console.log(response.response_msg);
+					});
+				}	
+	    	});
+	    },1000);
     };
 
 }); // -------------------- End jQuery -----------------------------

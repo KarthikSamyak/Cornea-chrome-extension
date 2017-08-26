@@ -23,10 +23,20 @@ chrome.storage.local.set({"checkedNotifyButton": "unchecked"}, function(result){
 
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
-	sendResponse({msg:"Done!" });
+	
 	if(request.msg == "executeNotify"){
-
-		
+		console.log("setting alarm");
+		chrome.alarms.create("alarmNotify", {periodInMinutes:1});
+		sendResponse({response_msg:"Done! alarmNotify set" });		
 	}
+	else if(request.msg == "removeNotify"){
+		console.log("removing alarm");
+		chrome.alarms.clearAll(function(){ });
+		sendResponse({response_msg:"Done! alarmNotify removed" });
+	}
+});
+
+chrome.alarms.onAlarm.addListener(function(alarm){
+    alert("Alarm Ringing!!!!!");
 });
 

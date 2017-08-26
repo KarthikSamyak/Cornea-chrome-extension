@@ -24,7 +24,7 @@
 	
 
    "permissions": [
-    "notifications","tabs","storage"
+    "notifications","tabs","storage","alarms"
   ],
    
 
