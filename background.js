@@ -22,3 +22,11 @@ chrome.storage.local.set({"checkedNotifyButton": "unchecked"}, function(result){
 });
 
 
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+	sendResponse({msg:"Done!" });
+	if(request.msg == "executeNotify"){
+
+		
+	}
+});
+

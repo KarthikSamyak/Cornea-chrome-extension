@@ -45,6 +45,12 @@ $(document).ready(function(){
   	       });    
 		});
 	});	
+	
+	function fullscreen() {
+		var el = document.documentElement,
+        rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+        rfs.call(el);
+	}
 });
 
 

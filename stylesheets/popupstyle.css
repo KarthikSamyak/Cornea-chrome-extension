@@ -19,8 +19,9 @@ body {
 #cornea {
 	font-family: 'Josefin Sans', sans-serif;
 	color: darkgrey;
+  font-weight: bold;
 	font-size: 30px;
-	text-align: center;
+  letter-spacing: 2px;
 	padding-bottom: 5px;
 	padding-top: 0px;
 	margin-bottom: 5px;
