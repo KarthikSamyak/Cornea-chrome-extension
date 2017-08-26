@@ -7,12 +7,12 @@ var buttonOverlay = document.querySelector("#toggle_overlay");
 var buttonNotify = document.querySelector("#toggle_notify");
 function setToggle(checker) {	// this function checks overlay toggle button for correct transition on each time popup.html is called
 	if(checker == "checked"){
-		console.log("checked! now unchecking...");
+		console.log("checked! now again checking...");
 		buttonOverlay.setAttribute("checked","checked");
 		chrome.storage.local.set({"checked": "checked"}, function(result){});		
 	}
 	else{
-		console.log("unchecked! now checking...");
+		console.log("unchecked! now again  unchecking...");
 		buttonOverlay.setAttribute("checked","");
 		buttonOverlay.removeAttribute("checked");
 		buttonOverlay.checked = false;
@@ -22,49 +22,18 @@ function setToggle(checker) {	// this function checks overlay toggle button for 
 
 function setToggleNotify(checker) {	// this function checks overlay toggle button for correct transition on each time popup.html is called
 	if(checker == "checked"){
-		console.log("checked! now unchecking...");
+		console.log("checked! now again checking...");
 		buttonNotify.setAttribute("checked","checked");
 		chrome.storage.local.set({"checkedNotifyButton": "checked"}, function(result){});		
 	}
 	else{
-		console.log("unchecked! now checking...");
+		console.log("unchecked! now again unchecking...");
 		buttonNotify.setAttribute("checked","");
 		buttonNotify.removeAttribute("checked");
 		buttonNotify.checked = false;
 		chrome.storage.local.set({"checkedNotifyButton": "unchecked"}, function(result){});		
 	}
 }
-
-function setToggle2(checker) {  // function to toggle between on/off on overlay button click
-	if(checker == "unchecked"){
-		console.log("unchecked! now checking...");
-		buttonOverlay.setAttribute("checked","checked");
-		chrome.storage.local.set({"checked": "checked"}, function(result){});
-	}
-	else{
-		console.log("checked! now unchecking...");
-		buttonOverlay.setAttribute("checked","");
-		buttonOverlay.removeAttribute("checked");
-		buttonOverlay.checked = false;
-		chrome.storage.local.set({"checked": "unchecked"}, function(result){});
-	}
-}
-
-function setToggleNotify2(checker) {  // function to toggle between on/off on Notify button click
-	if(checker == "unchecked"){
-		console.log("unchecked! now checking...");
-		buttonNotify.setAttribute("checked","checked");
-		chrome.storage.local.set({"checkedNotifyButton": "checked"}, function(result){});
-	}
-	else{
-		console.log("checked! now unchecking...");
-		buttonNotify.setAttribute("checked","");
-		buttonNotify.removeAttribute("checked");
-		buttonNotify.checked = false;
-		chrome.storage.local.set({"checkedNotifyButton": "unchecked"}, function(result){});
-	}
-}
-
 
 
 $(document).ready(function(){
@@ -80,7 +49,7 @@ $(document).ready(function(){
     buttonOverlay.onchange = function(){
 	    console.log("buttonOverlay clicked");
 	    chrome.storage.local.get("checked", function(data){	
-	  		setToggle2(data.checked);
+	  		button_1.setToggleOnChange(data.checked,"buttonOverlay");
     	});
 
 	    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -93,7 +62,7 @@ $(document).ready(function(){
     buttonNotify.onchange = function(){
     	console.log("buttonNotify clicked");
     	chrome.storage.local.get("checkedNotifyButton", function(data){	
-	  		setToggleNotify2(data.checkedNotifyButton);
+	  		button_2.setToggleOnChange(data.checkedNotifyButton,"buttonNotify");
     	});
     	
     	chrome.runtime.sendMessage({msg:"executeNotify"}, function(response){
@@ -101,5 +70,36 @@ $(document).ready(function(){
     	});
     };
 
-});
+}); // -------------------- End jQuery -----------------------------
 
+function Button(buttonName){   // button constructor
+	this.name = buttonName;
+}
+
+Button.prototype.setToggleOnChange = function(checker,button){  // function to toggle between on/off on button change
+	if(checker == "unchecked"){
+		console.log("unchecked! now checking...");
+		this.name.setAttribute("checked","checked");
+		if(button == "buttonOverlay"){
+			chrome.storage.local.set({"checked": "checked"}, function(result){});
+		}
+		else{
+			chrome.storage.local.set({"checkedNotifyButton": "checked"}, function(result){});
+		}
+	}
+	else{
+		console.log("checked! now unchecking...");
+		this.name.setAttribute("checked","");
+		this.name.removeAttribute("checked");
+		this.name.checked = false;
+		if(button == "buttonOverlay"){
+			chrome.storage.local.set({"checked": "unchecked"}, function(result){});
+		}
+		else{
+			chrome.storage.local.set({"checkedNotifyButton": "unchecked"}, function(result){});
+		}
+	}
+};
+
+var button_1 = new Button(buttonOverlay);  // buttonOverlay object
+var button_2 = new Button(buttonNotify);  // buttonNotify object
