@@ -26,7 +26,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){   
 	
 	if(request.msg == "executeNotify"){
 		console.log("setting alarm");
-		chrome.alarms.create("alarmNotify", {periodInMinutes:20});
+		chrome.alarms.create("alarmNotify", {periodInMinutes:1});
+		if (Notification.permission !== "granted"){
+    		Notification.requestPermission();
+    	}
 		sendResponse({response_msg:"Done! alarmNotify set" });		
 	}
 	else if(request.msg == "removeNotify"){
