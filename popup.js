@@ -1,6 +1,6 @@
 //          popup js
 //         =============
-//		Author:   Karthik Samyak
+//		  Karthik Samyak
 //      Updated:  August 2017
 
 var buttonOverlay = document.querySelector("#toggle_overlay");

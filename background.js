@@ -1,4 +1,7 @@
-// write the code that you want to run all the time when corona is enabled!
+//         background js
+//         =============
+//		  Karthik Samyak
+//      Updated:  August 2017
 
 
 chrome.storage.local.set({"toggle": false}, function() {    // Setting overlay variable 
