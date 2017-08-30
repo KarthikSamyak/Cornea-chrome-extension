@@ -1,20 +1,20 @@
 body {
-	width: 200px;
-    height: 200px;
-    max-width: 200px;
-    max-height: 200px;
+  width: 250px;
+    height: 250px;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 
 .wrapper {
-	height: 30px;
+  height: 30px;
   width: 100%;
   margin-bottom: 20px;
   
 }
 
 .bottom {
-	margin-top: 30px;
+  margin-top: 30px;
 }
 
 .labelsNaming {
@@ -27,46 +27,62 @@ margin-left: 10px;
 font-family: 'Josefin Sans';
 margin-top: 5px;
 }
+
+
+/*-----------styling sliders----------*/
+
+#sliders {
+  margin:7px 0px 7px 0px;
+}
+
+#slider1 {
+  margin: 10px 0px 10px 0px;
+}
+
+#slider2 {
+  margin: 10px 0px 10px 0px;
+}
+
 /*------Styling Cornea--------*/
 
 #cornea {
-	font-family: 'Josefin Sans', sans-serif;
-	color: darkgrey;
+  font-family: 'Josefin Sans', sans-serif;
+  color: darkgrey;
   font-weight: bold;
-	font-size: 30px;
+  font-size: 30px;
   letter-spacing: 2px;
-	padding-bottom: 5px;
-	padding-top: 0px;
-	margin-bottom: 5px;
-	margin-top: 0px;
+  padding-bottom: 5px;
+  padding-top: 7px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   border: 2px solid darkgrey;
   border-radius: 20px;
 }
 
 #c {
-	color: #009999;
+  color: #009999;
 }
 
 #o {
-	color: #ff6633;
+  color: #ff6633;
 }
 
 #r {
-	
-	color: #cc3366;
+  
+  color: #cc3366;
 }
 
 #n {
-	color: #006666;
+  color: #006666;
 }
 
 #e {
-	color: #ff9933;
+  color: #ff9933;
 }
 
 #a {
-	
-	color: #336666;
+  
+  color: #336666;
 }
 
 
@@ -95,7 +111,7 @@ input.toggle + label {
 }
 
 input.toggle + label:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 
