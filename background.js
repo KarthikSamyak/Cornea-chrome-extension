@@ -24,6 +24,10 @@ chrome.storage.local.set({"checkedNotifyButton": "unchecked"}, function(result){
 	console.log("Settings saved for buttonNotify toggle");
 });
 
+chrome.alarms.clearAll(function(){ });
+
+
+
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){   // Recieves messages from other scripts
 	

@@ -8,36 +8,26 @@ function shader(passedToggle){
 	console.log(passedToggle);
 	if(passedToggle){	
 		$("html").append( "<div id='overlay'></div>" );
-		$("html").append( "<div id='overlayBehind'></div>" ); // appending div element to body with an id overlay
+		
 		$("#overlay").css({								// specifying CSS properties for the overlay div element
 			"position" : "fixed",
 			"width" : "100%",
 			"height" : "100%",
 			"z-index" : "88888",		
-			"background": "rgb(255,129,0)",
-			"opacity": "0.7",
+			"background": "rgba(255,129,0,0.5)",
+			"opacity": "1",
 			"top" : "0",
 			"left" : "0",
 			"pointer-events": "none",				// allow users to interact with webpage without blocking pointer events 
 			"mix-blend-mode": "multiply"		
 		});
 
-		$("#overlayBehind").css({					// specifying CSS properties for the overlayBehind div element ( it helps in achieving multily blend mode)
-			"position" : "fixed",
-			"width" : "100%",
-			"height" : "100%",
-			"z-index" : "88887",		
-			"background": "black",
-			"opacity": "0.5",
-			"top" : "0",
-			"left" : "0",
-			"pointer-events": "none",
-		});
+		
 				
 	}
 	else{
 		$("#overlay").remove();		// remove overlay div element
-		$("#overlayBehind").remove();
+		
 	}	
 }
 
@@ -45,7 +35,7 @@ function opacity(passedOpacity){
 	console.log("executing opacity" + passedOpacity);
 	passedOpacity = passedOpacity/100;
 	$("#overlay").css({
-		"opacity": passedOpacity
+		"background": "rgba(255,129,0, "+passedOpacity+" )"
 	});
 }
 
@@ -53,11 +43,13 @@ function blueIntensity(passedIntensity){
 	console.log("executing intensity" + passedIntensity);
 	var red = passedIntensity;
 	chrome.storage.local.get("opacity",function(data){
-		
+		console.log("opacity retrived:" +data.opacity);
+		var opacity = data.opacity/100;
+		$("#overlay").css({
+			"background": "rgba("+red+",129,0,"+opacity+")"
+		});
 	});
-	$("#overlay").css({
-		"background": "rgb("+red+",129,0)"
-	});
+	
 }
 
 
