@@ -1,0 +1,57 @@
+<!--        popup html
+         =============
+        Karthik Samyak
+      Updated:  August 2017    -->
+
+
+<!doctype html>
+<html>
+  <head>
+    <title>Cornea</title>
+    <link rel="stylesheet" href="stylesheets/jQuery/jquery-ui.css">
+    <link rel="stylesheet" href="stylesheets/popupstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    
+  </head>
+  <body>
+    <div id="status"> 
+    
+      <p id="cornea"><img src="cornea.png" style="float: left; margin-top:0px; margin-left: 15px;"> &nbsp;  <span id="c">C</span><span id="o">o</span><span id="r">r</span><span id="n">n</span><span id="e">e</span><span id="a">a</span> </p>
+      <br>
+      <div class="wrapper">
+        <img src="images/icon_1.png" width="30px" height="30px" style="float: left;">
+        <label class="labelsNaming">Eye Protection</label>
+        <input type="checkbox" name="toggle" id="toggle_overlay" class="toggle">
+        <label for="toggle_overlay" style="float: right;"></label>
+
+      </div>
+
+      <div class="wrapper">
+        <img src="images/icon_2.png" width="30px" height="30px" style="float: left;">
+        <label class="labelsNaming">Eye Care</label>
+        <input type="checkbox" name="toggle_notify" id="toggle_notify" class="toggle">
+        <label for="toggle_notify" style="float: right;"></label>
+      </div>
+
+      <hr>
+      
+      <div id="sliders">
+        <div id="slider1">
+          <div style="text-align: center;"><img src="images/icon_3.png" width="30px" height="30px"><label class="labelsNaming" id="slider1_value"> </label></div>
+          <div id="opacity_slider" class="custom-slider"></div>
+        </div>
+        <div id="slider2">
+          <div style="text-align: center;"><img src="images/icon_4.png" width="30px" height="30px"><label class="labelsNaming" id="slider2_value"> </label></div>
+          <div id="intensity_slider" class="custom-slider"></div>
+        </div>
+      </div>
+
+      <h4 class="bottom">Refresh all existing tabs after turning on <span id="c">C</span><span id="o">o</span><span id="r">r</span><span id="n">n</span><span id="e">e</span><span id="a">a</span></h4>
+
+      <p class="bottom"> Version 1.0 alpha </p>  
+    </div>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="popup.js"></script>
+   <script type="text/javascript" src="jQuery/jquery-ui.js"></script>
+  </body>
+</html> 
