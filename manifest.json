@@ -2,20 +2,20 @@
 	//required
 	"manifest_version" : 2,
 	"name" : "Cornea",
-	"version" : "1.0",
+	"version" : "2.0",
   "background": {
       "persistent": true,
-      "scripts": ["jquery.js","background.js" ]
+      "scripts": ["jQuery/jquery.js","Javascripts/background.js" ]
    },
 	
 
 	//recommended
 	"description" : "Provides relief from eye strain while using chrome for longer time",
-	"icons" : { "128": "cornea_128.png",
-              "64": "cornea_64.png",
-              "32": "cornea_32.png" },
+	"icons" : { "128": "images/cornea_128.png",
+              "64": "images/cornea_64.png",
+              "32": "images/cornea_32.png" },
 	"browser_action": {
-      "default_icon": "cornea_128.png",
+      "default_icon": "images/cornea_128.png",
       "default_popup": "popup.html",
       "default_title": "Corona"
     },
@@ -31,7 +31,7 @@
 
    "content_scripts": [ {
       "all_frames": true,
-      "js": [ "jquery.js", "content.js" ],
+      "js": [ "jQuery/jquery.js", "Javascripts/content.js" ],
       "matches": [ "http://*/*",
       				"https://*/*" ],
       "run_at": "document_start"
